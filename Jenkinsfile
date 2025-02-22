@@ -3,48 +3,32 @@ pipeline {
 
     tools {
         // Specify the Maven installation from Jenkins tool configurations
-        maven 'Maven 3'  // Make sure Maven is installed and configured in Jenkins under "Global Tool Configuration"
+        maven 'Maven 3'  // Replace with the name of your Maven installation configured in Jenkins
     }
 
     stages {
         stage('Checkout') {
             steps {
-                // Checkout the code from the GitHub repository
+                // Checkout the code from the Git repository
                 checkout scm
             }
         }
 
         stage('Build') {
             steps {
-                // Run Maven build (mvn clean install)
+                // Build the Maven project (clean, install dependencies, package)
                 echo 'Building the project with Maven...'
-                sh 'mvn clean install'  // You can change this to 'mvn package' or 'mvn compile' if needed
-            }
-        }
-
-        stage('Test') {
-            steps {
-                // Run Maven tests (mvn test)
-                echo 'Running tests with Maven...'
-                sh 'mvn test'  // Run unit tests with Maven
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                // Deploy the project (if required)
-                echo 'Deploying the project...'
-                // Add deployment steps here if needed
+                sh 'mvn clean package'  // This will build the project and package it (e.g., .war/.jar file)
             }
         }
     }
 
     post {
         success {
-            echo 'Pipeline successfully completed!'
+            echo 'Build completed successfully!'
         }
         failure {
-            echo 'Pipeline failed!'
+            echo 'Build failed!'
         }
     }
 }
