@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Define Docker Hub credentials stored in Jenkins
-        DOCKER_CREDENTIALS = credentials()'CredentialID_DockerHubPWD') // Name of your Jenkins Docker Hub credentials ID
+        DOCKER_CREDENTIALS = credentials('CredentialID_DockerHubPWD') // Name of your Jenkins Docker Hub credentials ID
         IMAGE_NAME = 'comp367-lab2-webapp'
         DOCKER_TAG = 'latest' // You can modify this as per your versioning/tagging strategy
     }
