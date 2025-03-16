@@ -3,18 +3,14 @@ pipeline {
 
     environment {
         // Define Docker Hub credentials stored in Jenkins
-        DOCKER_CREDENTIALS = credentials('CredentialID_DockerHubPWD') // Name of your Jenkins Docker Hub credentials ID
+        DOCKER_CREDENTIALS = credentials('CredentialID_DockerHubPWD') // Jenkins Docker Hub Password
         IMAGE_NAME = 'comp367-lab2-webapp'
-        DOCKER_TAG = 'latest' // You can modify this as per your versioning/tagging strategy
+        DOCKER_TAG = 'latest'
     }
-
-    // triggers {
-        // pollSCM('H/5 * * * *')  // Poll the SCM every 5 minutes
-    // }
 
     tools {
         // Specify the Maven installation from Jenkins tool configurations
-        maven 'Maven 3'  // Replace with the name of your Maven installation configured in Jenkins
+        maven 'Maven 3'
     }
 
     stages {
@@ -37,10 +33,6 @@ pipeline {
         stage('Docker Login') {
             steps {
                 script {
-                    // Login to Docker Hub using Jenkins credentials
-                    //docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS) {
-                        //echo 'Docker login successful'
-                    //}
                     sh 'docker login -u jbelenzo -p ${DOCKER_CREDENTIALS}'
                 }
             }

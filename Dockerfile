@@ -27,8 +27,6 @@ RUN mvn clean install
 
 # Copy the generated WAR file to Tomcat's webapps directory
 COPY target/comp367-lab2-webapp.war /usr/local/apache-tomcat-9.0.52/webapps/
-# COPY target/comp367-lab2-webapp /usr/local/apache-tomcat-9.0.52/webapps/
-# COPY /usr/local/apache-tomcat-9.0.52/webapps/comp367-lab2-webapp/target/comp367-lab2-webapp/. /usr/local/apache-tomcat-9.0.52/webapps/  
 
 RUN mkdir -p /usr/local/apache-tomcat-9.0.52/webapps/comp367-lab3-webapp
 COPY ./target/comp367-lab2-webapp /usr/local/apache-tomcat-9.0.52/webapps/comp367-lab3-webapp/
