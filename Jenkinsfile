@@ -46,17 +46,16 @@ pipeline {
             }
         }
 
-                stage('Docker Push') {
+        stage('Docker Build') {
             steps {
                 script {
-                    // Push the Docker image to Docker Hub
-                    echo 'Pushing Docker image to Docker Hub...'
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS) {
-                        sh 'docker push $IMAGE_NAME:$DOCKER_TAG'
-                    }
+                    // Build the Docker image using the Dockerfile
+                    echo 'Building Docker image...'
+                    sh 'docker build -t $IMAGE_NAME:$DOCKER_TAG .'
                 }
             }
         }
+        
     }
 
     post {
