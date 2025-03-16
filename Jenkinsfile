@@ -38,9 +38,10 @@ pipeline {
             steps {
                 script {
                     // Login to Docker Hub using Jenkins credentials
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS) {
-                        echo 'Docker login successful'
-                    }
+                    //docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS) {
+                        //echo 'Docker login successful'
+                    //}
+                    sh 'docker login -u jbelenzo -p ${DOCKER_CREDENTIALS}'
                 }
             }
         }
