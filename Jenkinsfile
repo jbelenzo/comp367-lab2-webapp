@@ -55,7 +55,18 @@ pipeline {
                 }
             }
         }
-        
+
+        stage('Docker Push') {
+            steps {
+                script {
+                    // Push the Docker image to Docker Hub
+                    echo 'Pushing Docker image to Docker Hub...'
+                    sh 'docker tag $IMAGE_NAME:$DOCKER_TAG jbelenzo/$IMAGE_NAME:$DOCKER_TAG'
+                    sh 'docker push jbelenzo/$IMAGE_NAME:$DOCKER_TAG'
+                }
+            }
+        }
+
     }
 
     post {
