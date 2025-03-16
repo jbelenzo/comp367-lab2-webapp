@@ -9,41 +9,63 @@
     <name>comp367-lab2-webapp Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
+    <properties>
+        <!-- Ensure compatibility with Java 21 -->
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+    </properties>
+
     <dependencies>
         <!-- Servlet API Dependency for Web Applications -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version> <!-- Adjust version according to your needs -->
-            <scope>provided</scope> <!-- Provided scope because it's part of the web container -->
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>5.0.0</version> <!-- Use Jakarta API for Java 21 compatibility -->
+            <scope>provided</scope>
         </dependency>
 
         <!-- JUnit Dependency for Unit Tests -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.7.2</version> <!-- Updated to JUnit 5 -->
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.7.2</version> <!-- Updated to JUnit 5 -->
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Tomcat Dependency -->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-servlet-api</artifactId>
+            <version>9.0.52</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
     <build>
         <finalName>comp367-lab2-webapp</finalName>
 
-        <!-- Webapp plugin configuration -->
+        <!-- Maven Plugins -->
         <plugins>
             <!-- Maven WAR Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.3.1</version> <!-- You can use the latest stable version -->
+                <version>3.3.0</version> <!-- Updated to a valid version -->
                 <configuration>
-                    <!-- Ensure the classes are packaged properly -->
                     <webResources>
                         <resource>
                             <directory>src/main/webapp</directory>
                         </resource>
                     </webResources>
+                    <warName>comp367-lab2-webapp</warName>
+                    <source>21</source>
+                    <target>21</target>
                 </configuration>
             </plugin>
         </plugins>

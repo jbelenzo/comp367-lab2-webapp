@@ -16,9 +16,9 @@ public class WelcomeServlet extends HttpServlet {
         // Determine whether it's morning or afternoon
         String greeting;
         if (currentTime.isBefore(LocalTime.NOON)) {
-            greeting = "Good morning, Jasper, Welcome to COMP367";
+            greeting = "Good Morning Jasper! Welcome to COMP367";
         } else {
-            greeting = "Good afternoon, Jasper, Welcome to COMP367";
+            greeting = "Good Afternoon Jasper!, Welcome to COMP367";
         }
 
         // Print the greeting
